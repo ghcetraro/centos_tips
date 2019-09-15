@@ -1,0 +1,8 @@
+In CentOS you have the file /etc/sysconfig/iptables if you don't have it there, 
+you can create it simply by using iptables-save to dump the current rule set into a file.
+
+iptables-save > /etc/sysconfig/iptables
+
+To load the file you don't need to restart the machine, you can use iptables-restore
+
+iptables-restore < /etc/sysconfig/iptables

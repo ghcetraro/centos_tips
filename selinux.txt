@@ -1,0 +1,15 @@
+Tips de instalacion y configuracion
+
+En centos, para que envie mail apache hay que habilitar
+
+setsebool -P httpd_can_sendmail on
+
+Esto se hace para habilitar  la base de datos con:
+
+setsebool -P httpd_can_network_connect_db on
+
+y para el NFS con:
+
+setsebool -P http_use_nfs on
+
+

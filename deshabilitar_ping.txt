@@ -1,0 +1,25 @@
+How to Block Ping (ICMP) Responses in Linux System
+Written by Rahul, Updated on January 10, 2015
+ Security dos, icmp, iptables, ping 
+
+ 
+Blocking ping responses from system can prevent system from hackers to ICMP flood dos attacks. So it can be a best practice for system security but most of online monitoring systems uses ping requests for monitoring system.
+
+Disable Ping using iptables
+You can simply block icmp responses directly from firewall in any Linux systems.
+
+# iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
+Block Ping with Kernel Parameter
+We can also block ping responses from system by directly updating kernel parameters. In this we can block ping responses temporarily or permanently as below.
+
+Block Ping Temporarily
+You can block temporarily block ping responses temporarily using following command
+
+# echo "1" >  /proc/sys/net/ipv4/icmp_echo_ignore_all
+Block Ping Permanently
+In place of blocking ping temporarily, You can block it permanently by adding following parameter in /etc/sysctl.conf configuration file.
+
+net.ipv4.icmp_echo_ignore_all = 1
+Now execute following command to apply settings immediately without rebooting system.
+
+# sysctl -p

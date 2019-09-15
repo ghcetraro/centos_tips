@@ -1,0 +1,66 @@
+Existen muchas formas de conocer la versión de CentOS instalada en nuestro servidor. A continuación te dejo algunos comandos que puedes ejecutar para determinar la versión de centOS instalada en tu sistema.
+
+Para empezar utilizaremos el comando es hostnamectl:
+
+# hostnamectl
+        Static hostname: ​localhost.localdomain
+                 Icon name: computer-desktop
+                      Chassis: desktop
+               Machine ID: 2a20936de9875b9fa9e003ad3e9629f8
+                     Boot ID: 20d7f0376cb04038840681c8e628d22d
+     Operating System: CentOS Linux 7 (Core)
+          CPE OS Name: cpe:/o:centos:centos:7
+                       Kernel: Linux 3.10.0-693.17.1.el7.x86_64
+              Architecture: x86-64
+
+Tal vez no tengas instalado centOS 7 y el comando arriba te dará como resultado un error. Es posible que debas utilizar cat para consultar la versión del sistema, los archivos que contienen esta información son:
+
+/etc/centos-release
+/etc/os-release
+/etc/redhat-release
+/etc/system-release
+
+Por lo tanto utilizando el comando cat tendremos el siguiente resultado:
+
+#cat /etc/centos-release
+CentOS Linux release 7.4.1708 (Core)
+
+# cat /etc/os-release
+NAME="CentOS Linux"
+VERSION="7 (Core)"
+ID="centos"
+ID_LIKE="rhel fedora"
+VERSION_ID="7"
+PRETTY_NAME="CentOS Linux 7 (Core)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:centos:centos:7"
+HOME_URL="https://www.centos.org/"
+BUG_REPORT_URL="https://bugs.centos.org/"
+CENTOS_MANTISBT_PROJECT="CentOS-7"
+CENTOS_MANTISBT_PROJECT_VERSION="7"
+REDHAT_SUPPORT_PRODUCT="centos"
+REDHAT_SUPPORT_PRODUCT_VERSION="7"
+
+#cat /etc/redhat-release
+CentOS Linux release 7.4.1708 (Core)
+
+#cat /etc/system-release
+CentOS Linux release 7.4.1708 (Core)
+
+Otro comando que se puede utilizar es lsb_release. Ten en cuenta que este comando hace parte del paquete redhat-lsb por lo tanto es posible que no lo tengas instalado ya que no se incluye por defecto. 
+
+Aún buscando un VPS?
+
+Contrata hoy mismo tu VPS con soporte en español y precio justo.
+
+
+$us12.25/mes
+VER PLANES
+
+# lsb_release -d
+        Description: CentOS Linux release 7.1.1503 (Core)
+
+Finalmente es posible utilizar rpm para consultar la versión de centOS instalada: 
+
+# rpm --query centos-release
+centos-release-7-4.1708.el7.centos.x86_64
